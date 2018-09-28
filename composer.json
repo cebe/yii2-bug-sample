@@ -1,0 +1,19 @@
+{
+    "name": "sam/bug-sample",
+    "description": "Bug sample",
+    "authors": [
+        {
+            "name": "Sam Mousa",
+            "email": "sam@mousa.nl"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "2.0.15.1"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
