@@ -1,9 +1,11 @@
 version: '3.4'
 services:
   cli: &cli
+    build:
+      context: ./dockerfiles
+      dockerfile: PHP72
     depends_on:
       - testdb
-    image: php:7.2-alpine
     volumes:
       - .:/project:rw
     environment:
@@ -28,6 +30,9 @@ services:
     image: php:7.3-rc-alpine
   cli72:
     <<: *cli
+    build:
+      context: ./dockerfiles
+      dockerfile: PHP72
   cli71:
     <<: *cli
     image: php:7.1-alpine

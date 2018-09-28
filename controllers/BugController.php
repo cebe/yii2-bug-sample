@@ -45,4 +45,30 @@ class BugController extends Controller
         return;
     }
 
+    /**
+     * Try to reproduce the bug without Yii AR
+     */
+    public function actionAlternative()
+    {
+        $this->initWatchPdo();
+        $db = \Yii::$app->db;
+
+        for($i = 0; $i< 100; $i++) {
+
+            $statement = $db->masterPdo->prepare('select * from `b`');
+            $statement->setFetchMode(\PDO::FETCH_ASSOC);
+            $holder = new \ArrayObject();
+            $holder->append($statement);
+
+            $circular = new \ArrayObject();
+            $circular->append($holder);
+            $holder->append($circular);
+            $db->close();
+            $this->dumpCount();
+        }
+
+
+
+    }
+
 }

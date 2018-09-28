@@ -1,7 +1,6 @@
 <?php
 require_once  'vendor/autoload.php';
 
-echo PHP_VERSION;
 $container = new \yii\di\Container();
 define('YII_DEBUG', true);
 // Define Yii class.

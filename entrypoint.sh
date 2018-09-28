@@ -1,4 +1,5 @@
 #!/bin/sh
 
-docker-php-ext-install pdo_mysql
+php -m | grep pdo_mysql || docker-php-ext-install pdo_mysql
+
 exec php /project/config.php $*
