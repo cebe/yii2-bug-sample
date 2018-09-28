@@ -23,6 +23,11 @@ services:
     healthcheck:
       test: lsof -i :3306
 
+  cli73:
+    <<: *cli
+    image: php:7.3-rc-alpine
+  cli72:
+    <<: *cli
   cli71:
     <<: *cli
     image: php:7.1-alpine
