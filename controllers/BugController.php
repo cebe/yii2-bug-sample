@@ -43,33 +43,6 @@ class BugController extends Controller
         }
 
         return;
-        $organisationId = Organisation::find()->one()->id;
-
-        $mailer = new Mailer();
-        $mailer->name = 'test';
-        $mailer->organisation_id = $organisationId;
-        $mailer->configuration = '{}';
-        $mailer->type = 'dummy';
-        $mailer->detachBehavior('creator');
-        $mailer->detachBehavior('explicit');
-        $mailer->created_by = 1;
-        $mailer->save();
-        
-        if (!$mailer->save()) {
-            throw new \Exception(print_r($mailer->errors, true));
-        }
-        for($i = 0; $i < 100; $i++) {
-            $organisation = Organisation::find()->andWhere(['id' => $organisationId])->one();
-            /** @var RangeValidator */
-            $rangeValidator = $organisation->getActiveValidators('mailer_id')[0];
-            $rangeValidator->validate($mailer->id);
-            $db->close();
-            $this->dumpCount();
-        }
-
-
-
-
     }
 
 }
