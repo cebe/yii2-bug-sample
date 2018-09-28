@@ -36,7 +36,7 @@ class BugController extends Controller
             $a = A::findOne(['id' => 1]);
 
             /** @var RangeValidator */
-            $rangeValidator = $a->getValidators('mailer_id')[0];
+            $rangeValidator = $a->getValidators()[0];
             $rangeValidator->validate(5);
             $db->close();
             $this->dumpCount();
